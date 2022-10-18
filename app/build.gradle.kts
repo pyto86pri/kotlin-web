@@ -7,12 +7,9 @@
  */
 
 plugins {
-    // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
-    kotlin("jvm") version "1.6.21"
-
-    // Apply the application plugin to add support for building a CLI application in Java.
     application
-
+    kotlin("jvm") version "1.6.21"
+    id("io.ktor.plugin") version "2.1.1"
     id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
 }
 
@@ -22,11 +19,13 @@ repositories {
 }
 
 dependencies {
-    // This dependency is used by the application.
     implementation("com.google.guava:guava:31.0.1-jre")
+    implementation("io.ktor:ktor-server-core-jvm:2.1.0")
+    implementation("io.ktor:ktor-server-netty-jvm:2.1.0")
+    implementation("ch.qos.logback:logback-classic:1.2.11")
 
-    // Use the Kotlin test library.
     testImplementation(kotlin("test"))
+    testImplementation("io.ktor:ktor-server-tests-jvm:2.1.0")
 }
 
 application {
